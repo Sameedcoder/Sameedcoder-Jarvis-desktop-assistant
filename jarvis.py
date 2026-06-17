@@ -1,9 +1,10 @@
 import speech_recognition as mic
 import webbrowser as browse
-
+import subprocess as apps
 
 
 import os as system 
+voice_of_conformation=""
 name = "main"
 def say(text):
    system.system(f"say {text}")
@@ -32,12 +33,17 @@ def activatewebsite():
    voice_of_conformation="the website has opened successfully in the browser"
    say(voice_of_conformation)
 
-      
-      
+
+#opening the apps 
+def openingapps():
+   apps.Popen([data_of_voice])
+   voice_of_conformation= "the apps is opened successfully"
+   say(voice_of_conformation) # to conforthe voice 
+   print ("the website has opened ")
     
       
       
-#main function      
+#main code    
 if name == "main":
       say("hello i am jarvis ")
       while True:
@@ -46,3 +52,5 @@ if name == "main":
        say(data_of_voice)
        if "open site" in data_of_voice.lower():     #checking if the funciton contains the voice
           activatewebsite(data_of_voice)
+       if "open app " in data_of_voice.lower(): # openning the app   
+         openingapps(data_of_voice)
