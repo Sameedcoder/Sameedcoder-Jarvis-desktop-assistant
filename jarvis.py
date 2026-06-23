@@ -5,6 +5,7 @@ from pathlib import Path as files
 from openai import OpenAI as AI
 import wikipedia as know
 import os as system 
+import requests
 voice_of_conformation=""
 name = "main"
 pdf = "open pdf"
@@ -75,7 +76,19 @@ def opening_pdf_files(pdffile):
          say(voice_of_conformation) 
          break
     
-
+def weather():   # weather telling api 
+   Api_key= "3dd9c5ab9ecb551516c2bb9df39f3a16"
+   city = "lahore"
+   url = 'https://openweathermap.org/'
+   response=requests.get(url)
+   check=("status code",response.status_code)
+   if response.status_code==200:
+      say("yes the information  is working good")
+      data=response.json()
+      say(f"{data} yes this is the informaiton ")  
+      
+   
+   
 
 
 #main code    
@@ -97,4 +110,6 @@ if name == "main":
        if open in data_of_voice.lower():
             matter=data_of_voice
             opening_pdf_files(matter)
+       if "tell me " in data_of_voice.lower():
+             
           
